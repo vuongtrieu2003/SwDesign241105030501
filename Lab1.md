@@ -22,7 +22,7 @@ Kiến trúc phù hợp cho hệ thống này là kiến trúc phân lớp (Laye
 - Cơ chế báo cáo: Cần cung cấp báo cáo về số giờ làm việc, tổng lương và chi tiết liên quan cho từng nhân viên.
 - Tích hợp với cơ sở dữ liệu cũ: Hệ thống phải tích hợp với cơ sở dữ liệu cũ và kiểm tra sự hợp lệ.
 ## 3. Phân tích ca sử dụng Payment:
-**Lớp phân tích: Bao gồm các lớp chính:**
+**Lớp phân tích:**
 - Employee: Nhân viên chọn phương thức thanh toán.
 - PayrollService: Xử lý yêu cầu tính lương và thanh toán.
 - PaymentMethod: Phương thức thanh toán được chọn (chuyển khoản, nhận phiếu lương).
@@ -35,3 +35,19 @@ Kiến trúc phù hợp cho hệ thống này là kiến trúc phân lớp (Laye
 **Biểu đồ lớp mô tả các lớp phân tích:**
 
 ![](https://www.planttext.com/api/plantuml/png/Z58xQWCn4ErrYYcJmXTG4HnmYXI1W7C1HJjaXVMBFeObv32k0e50watXmk1xx0boXMW_idSN5r4XDE_Dp9idwVTdl_I1kH2L97uZD3ZZaN39l8SxPQMf4E6DG5euXFSh2klWX7xfOCqKJW3BAeKwF60eJK7XSHns2GvV8_em45VN5BP65EIT3Bg9S4RADRgju5dTzk2AXQJMxXczLIRgGA4myLdsA6UIHvboKgUs_PXosEEyHBvfoNoUw9yd7kHL5pnLTkRL6OxUPojiCiibOvtKsTA_x3ZanXNZcNFRqmij5ZVpQwDG7JuZyAR-Y6J63UaZbnJ2uKkN88_VnrqoTxcWdpxbDlNEW2r5K-_ZgMQ9kcZ_qHy0003__mC0)
+
+## 4. Phân tích ca sử dụng Maintain Timecard
+**Lớp phân tích:**
+- Employee: Nhân viên nhập thông tin bảng chấm công về thời gian làm việc.
+- Timecard: Lưu trữ thông tin bảng chấm công bao gồm ngày và số giờ làm việc.
+- TimecardService: Xử lý yêu cầu từ nhân viên để lưu bảng chấm công vào cơ sở dữ liệu.
+- TimecardRepository: Quản lý lưu trữ bảng chấm công trong cơ sở dữ liệu.
+- ProjectManagementDB: Lấy thông tin về mã dự án từ cơ sở dữ liệu cũ để đối chiếu với bảng chấm công.
+  
+**Biểu đồ sequence:**
+
+  ![](https://www.planttext.com/api/plantuml/png/Z55DIiGm5Dxd5Dy5Ue4YCWowyWVHMSmsfg6DRLvYcWxCKho8m-1IK73LBcOHy1uvWLUm0HrmxCBbU-_xU-zz3hjPwxdpdMvOMok2CwraN7ZZSAfjOzPICZi2b52MayT2QIcuAswaModnUtRbp9qK_e8JBwMMv4_caznhQKshHeirOpyco8uFjNDSLh5_iRYD_PPAYB5wrX3XdKfsW4tq2ViSPoeEZnhUSUYmHH67DuGDiGdmP8I56ysnYiC3wjZlFEwxrAZtibD9_YwQu_pZjVlN9aTPjZzzZcNO252w0w594huAJrHzSsUIYlIwBm000F__0m00)
+
+  **Biểu đồ lớp mô tả các lớp phân tích:**
+
+  ![](https://www.planttext.com/api/plantuml/png/b5BDIiD04BxdAUQeXxx08gLeF0WgOWNFcysGhidkblq95F7aaqWHGH0KF3K73m7V8q_WAxX9azAcyU0U5cRccs_c-vYVucjYBDNMYImmAPUWbS60PTGOE1NpJ2qGuJu0_x0Dpq82KwkvJ9gqf09t4iP5WjiRBf1H7HyS4iWLZuE7eANjAYsjRSCURKojfmtztuGpvRIvLJh5c02Njaco6TK9NZeHeTvfpcd6QuAJBK2zIAHKjh_857NE6VRsCGJEkR577Mgy5aTpt4Zhe6H3zQVOQvmhmwtIYzuOhv0EJ_BWVuswqkeEcRsWaYOeKDhmk9srxLCdQ-tMkAqZItUy6d9sox_DPOn6upqR2IHLySPXKRuwODNgnGLzIDqsj2w1b5V5em2hAOXo2N5LV43v90SP1hmba7s_EuYgrL8cNbUrUXR0oaz_5nEKSNtblm000F__0m00)
