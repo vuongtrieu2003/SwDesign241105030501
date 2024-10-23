@@ -51,3 +51,8 @@ Kiến trúc phù hợp cho hệ thống này là kiến trúc phân lớp (Laye
   **Biểu đồ lớp mô tả các lớp phân tích:**
 
   ![](https://www.planttext.com/api/plantuml/png/b5BDIiD04BxdAUQeXxx08gLeF0WgOWNFcysGhidkblq95F7aaqWHGH0KF3K73m7V8q_WAxX9azAcyU0U5cRccs_c-vYVucjYBDNMYImmAPUWbS60PTGOE1NpJ2qGuJu0_x0Dpq82KwkvJ9gqf09t4iP5WjiRBf1H7HyS4iWLZuE7eANjAYsjRSCURKojfmtztuGpvRIvLJh5c02Njaco6TK9NZeHeTvfpcd6QuAJBK2zIAHKjh_857NE6VRsCGJEkR577Mgy5aTpt4Zhe6H3zQVOQvmhmwtIYzuOhv0EJ_BWVuswqkeEcRsWaYOeKDhmk9srxLCdQ-tMkAqZItUy6d9sox_DPOn6upqR2IHLySPXKRuwODNgnGLzIDqsj2w1b5V5em2hAOXo2N5LV43v90SP1hmba7s_EuYgrL8cNbUrUXR0oaz_5nEKSNtblm000F__0m00)
+
+## 5. Hợp nhất kết quả phân tích:
+- Employee là đối tượng tương tác với hệ thống để nhập bảng chấm công và chọn phương thức nhận lương.
+- PayrollService và TimecardService có vai trò xử lý các nghiệp vụ chính của hệ thống, và cả hai dịch vụ này tương tác với các kho dữ liệu (EmployeeRepository, TimecardRepository, ProjectManagementDB) để xử lý các thông tin cần thiết.
+- Hệ thống được thiết kế đảm bảo thông tin từ các bảng chấm công và phương thức nhận lương của nhân viên được liên kết chính xác, đảm bảo tính chính xác trong việc trả lương theo yêu cầu.
