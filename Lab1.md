@@ -4,7 +4,7 @@ PHÂN TÍCH KIẾN TRÚC, CƠ CHẾ, CA SỬ DỤNG
 ## 1. Phân tích kiến trúc
 ### Đề xuất kiến trúc, giải thích lý do lựa chọn và ý nghĩa từng thành phần trong kiến trúc, vẽ biểu đồ package mô tả kiến trúc.
 #### Đề xuất kiến trúc
-Kiến trúc phù hợp cho hệ thống này là kiến trúc phân lớp (Layered Architecture), với 4 lớp chính:
+Kiến trúc phù hợp cho hệ thống này là kiến trúc phân tầng(Layered Architecture), với 4 tầng chính:
 
 - Presentation Layer (Giao diện người dùng): Cho phép người dùng nhập bảng chấm công và chọn phương thức thanh toán.
 - Service Layer (Tầng dịch vụ): Xử lý logic nghiệp vụ như tính toán lương, kiểm tra bảng chấm công, và quản lý phương thức thanh toán.
