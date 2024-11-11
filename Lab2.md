@@ -30,7 +30,9 @@
     * Nhiệm vụ: Quản lý việc lưu báo cáo theo tên và vị trí được cung cấp.
     * Thuộc tính: filePath, fileName.
     * Quan hệ: Nhận thông tin từ PayrollAdministrator để lưu Report.
+      
 **Biểu đồ lớp**
+
 ![Class Diagram](https://www.planttext.com/api/plantuml/png/X59BRi8m4DtFANo1NA6Y8W9r0KA82uoI0IpiSJIUBgAg9-k28_KA1CUGr6hLtPlFUpDlxE-lwo8gYhvx1_5YsKY818t36CqEUmdElRRUieqgg47C1nXJ6Rpdtkg46Jt19sJIdheWkXIh91PpkwJaeUyeXMbYZJf6nEs4VUT2JxGTD6CfkYQc-HAZQjxYD1Pju2HMK3EZ2Qp4cl0nYCSHDa83f_r9N5b76sGyqMFUSSZiKC_FO9kT_tgegdefZW75RQQEfpCedKuz_qtvkpvp0dDNCouiXbUu_u4R0000__y30000)
 - Giải thích biểu đồ lớp trong hệ thống Create Administrative Report:
   + PayrollAdministrator cung cấp tiêu chí báo cáo qua ReportCriteria và yêu cầu ReportGenerator tạo báo cáo.
