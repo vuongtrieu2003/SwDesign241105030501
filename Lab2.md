@@ -29,21 +29,51 @@
   + ErrorHandler: Hiển thị thông báo lỗi khi có thông tin thiếu hoặc không hợp lệ.
 # 2. Phân tích ca sử dụng Create Employee Report
 **Các lớp phân tích:**
-
+- Employee: Người dùng yêu cầu tạo báo cáo.
+- ReportGenerator: Xử lý yêu cầu tạo báo cáo dựa trên các tiêu chí được cung cấp.
+- ReportCriteriaValidator: Kiểm tra tiêu chí báo cáo có hợp lệ không.
+- ReportRepository: Lưu hoặc loại bỏ báo cáo theo yêu cầu.
 
 **Biểu đồ sequence**
 
+![Sequence Diagram](https://www.planttext.com/api/plantuml/png/UhzxlqDnIM9HIMbk3bTnTcQUGb5-SIfNOd99Vf62Qsv1JdvbQYeNZA6WQwSGb5gGNrJYdfgNMfG8L6Ib47buLQb2yiDToqiLIXxkMfYla7GOI2G32IuqjGZjpaMP9Qb5cObXYJcPAH1Z8WulJ5OeoNYuUoEGoWIRcN5uBOPX63gnkYa4OG3GnCK52ZaFTxVZTWwoJi9UW8M6bO97viFTpNbWLtSZwI4sk7AERIWbrYhaK3wyAa-XxF02XJAGjIL5G4-2JC9lhNDfNZf8_z82BFfnXmo8BCu42bLQAVXWSov2WO8kDdkTOEeLZamyl1ZYK8VKl1HGUWC0003__mC0)
+
 **Thuộc tính và Quan hệ:**
+- Employee: Yêu cầu tạo và lưu báo cáo.
+- ReportGenerator: Xử lý tạo báo cáo và yêu cầu lưu báo cáo.
+- ReportCriteriaValidator: Kiểm tra tiêu chí báo cáo.
+- ReportRepository: Lưu hoặc xóa báo cáo.
 
 **Biểu đồ lớp**
+
+![Class Diagram](https://www.planttext.com/api/plantuml/png/V51B2i8m4Dtd55tgebUGGX7t2kv3-nR1DAapqq8HJ-R28ta56n9jQQ5P1F9-yoQVrxjWqIHTOnNVZCl8CrHbDNDsR5hh1o1xg6myX7i7bZDQJr8Ij1ZlTlivTz4z8Z_YJvLo8dA20sdnbEAga32f0yGRzfACW8o-QclgMKmVt_ZnQsUusOoE8Ld2c3InXeKWUlxhvlbXsLajTvWqgs8RsgcAAk3gyEbV0000__y30000)
+- Giải thích biểu đồ lớp:
+  + Employee: Lớp đại diện cho nhân viên yêu cầu tạo báo cáo và lưu báo cáo.
+  + ReportGenerator: Xử lý việc tạo báo cáo theo yêu cầu của nhân viên. Lớp này kiểm tra tiêu chí qua ReportCriteriaValidator và tương tác với ReportRepository để     lưu báo cáo nếu cần.
+  + ReportCriteriaValidator: Xác minh tính hợp lệ của tiêu chí báo cáo như loại báo cáo, ngày tháng và tên nhân viên.
+  + ReportRepository: Lưu trữ hoặc xóa báo cáo dựa trên yêu cầu.
 # 3. Phân tích ca sử dụng Login
 **Các lớp phân tích:**
+- User: Người dùng nhập thông tin đăng nhập.
+- LoginService: Xử lý xác thực thông tin đăng nhập.
+- UserRepository: Kiểm tra thông tin từ cơ sở dữ liệu để xác thực đăng nhập.
 
 **Biểu đồ sequence**
 
+![Sequence Diagram](https://www.planttext.com/api/plantuml/png/UhzxlqDnIM9HIMbk3bTnTcQUGb5-SIfNOd99Vf52Q75g4HU8KD2rK_39Jy_C2qujAijCJhLIyCjuk6jjWKB9uLLv2aSc7cdEIrV8WmYL7LwWa0jabIXa0mLMbd8XQmGP138mABKWlpWJQ4UbbO9tviFTpRaA9KM92YKPXxS0JIh9H3EK2rMFWYw6Uq8GEZCUxbvSe93pS7SxLgkj58vCG7OlqCu5UHaAoI3zN0wfUIcWa000003__mC0)
+
 **Thuộc tính và Quan hệ:**
+- User: Cung cấp thông tin đăng nhập.
+- LoginService: Xác thực thông tin và thông báo kết quả đăng nhập.
+- UserRepository: Kiểm tra thông tin từ cơ sở dữ liệu.
 
 **Biểu đồ lớp**
+
+![Class Diagram](https://www.planttext.com/api/plantuml/png/R9112i9034NtSufPLh0Nw48ARbrPFC0u3UtGQLAIQKN4axdmI5x1JgdYW5c5d-Jb9w_7ivHWE8ozLz8vr4m2odeZeay2h6zApp7EAPeU2bq5TjWiuZ0tNOZhHFJKECmswgvMoY4A5V3aBAmqCuOMC3Xh0cGVzFRB-ncE5eumaBX0V5t7RGksspFKaM6y_4CK-apamM1aBOVa-IxneX9ZiPekKoLW7T_o1W00__y30000)
+- Giải thích biểu đồ lớp:
+  + User: Đại diện cho người dùng nhập thông tin đăng nhập (tên người dùng và mật khẩu) và yêu cầu đăng nhập.
+  + LoginService: Xác thực thông tin đăng nhập của người dùng. Dịch vụ này gọi UserRepository để kiểm tra thông tin.
+  + UserRepository: Kiểm tra thông tin đăng nhập từ cơ sở dữ liệu và phản hồi kết quả cho LoginService.
 # 4. Phân tích ca sử dụng Maintain Employee Information
 **Các lớp phân tích:**
 - PayrollAdministrator: Người thực hiện thêm, cập nhật hoặc xóa thông tin nhân viên.
