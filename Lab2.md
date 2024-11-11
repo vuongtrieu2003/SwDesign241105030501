@@ -146,3 +146,4 @@
   + EmployeeRepository: Cung cấp thông tin nhân viên để tính lương.
   + PaymentService: Xử lý các hình thức thanh toán và in phiếu lương hoặc gửi giao dịch ngân hàng.
   + BankSystem: Xử lý giao dịch ngân hàng nếu nhân viên chọn phương thức chuyển khoản.
+# 7. Viết code Java mô phỏng ca sử dụng Maintain Timecard.
