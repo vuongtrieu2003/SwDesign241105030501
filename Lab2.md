@@ -1,10 +1,10 @@
 # 1. Phân tích ca sử dụng Create Administrative Report
 **Các lớp phân tích:**
-- PayrollAdministrator: Người yêu cầu tạo báo cáo.
-- ReportGenerator: Chịu trách nhiệm tạo báo cáo.
-- ReportCriteriaValidator: Xác minh tiêu chí báo cáo.
-- ReportRepository: Lưu trữ báo cáo.
-- ErrorHandler: Hiển thị lỗi.
+- PayrollAdministrator: Người dùng (quản trị viên) khởi tạo yêu cầu báo cáo.
+- ReportGenerator: Xử lý yêu cầu tạo báo cáo theo các tiêu chí được cung cấp.
+- ReportCriteriaValidator: Kiểm tra tiêu chí báo cáo đã đầy đủ và hợp lệ chưa.
+- ReportRepository: Lưu trữ hoặc loại bỏ báo cáo dựa trên yêu cầu.
+- ErrorHandler: Hiển thị thông báo lỗi khi có sự cố hoặc thiếu dữ liệu.
   
 **Biểu đồ sequence**
 
@@ -12,21 +12,21 @@
 
 **Thuộc tính và Quan hệ:**
 
-- PayrollAdministrator: Có thuộc tính adminId, name, và phương thức generateAdminReport().
-- Report: Có thuộc tính reportType, dateRange, content, chứa nội dung của báo cáo.
-- System: Liên kết giữa PayrollAdministrator và Report để tạo báo cáo theo tiêu chí.
-
+- PayrollAdministrator: Thực hiện yêu cầu tạo và lưu báo cáo.
+- ReportGenerator: Quản lý tạo báo cáo dựa trên tiêu chí được cung cấp và lưu báo cáo nếu cần.
+- ReportCriteriaValidator: Kiểm tra tiêu chí hợp lệ của báo cáo.
+- ReportRepository: Lưu hoặc xóa báo cáo tùy yêu cầu.
+- ErrorHandler: Hiển thị lỗi khi tiêu chí không hợp lệ hoặc bị thiếu.
       
 **Biểu đồ lớp**
 
-![Class Diagram](https://www.planttext.com/api/plantuml/png/R90z3i8m38NtdC8Z7Ng130Wa5ZPKk43KMbL4wo377Ih4OPYGE08C39oa9-0AD6rQ2OdDVlRx_FDvlbPU34jJLyeVBG4xZoglZFUmCosxgbeNjINhXOquXhC201EaRQ71aeISJ8qQziAMof2NIDYtus3DyEHO5ecwg0WUbH75GtneJp-0eZTdXifUt4nXq7D7WYHpwupSjrwm7f7Jz3WuPol8raocHCS5WlllZMcwd80QslUzWRnxt1eLjL2E9sYGxd5rQeLKX1T-0G00__y30000)
+![Class Diagram](https://www.planttext.com/api/plantuml/png/V55B2i8m4Dtd55tgmYj8fOWkHS7zqCnYC2PrPbeeuibSU2IlO6Ch3LNC8f1vlxpaUN_aei1QdvsH4_cCWw0f7OXaEsWvEBUoP_8aog21iwl9kiLugL5qZrLWBHX1AVZPFCKEq62FT_ER6JpxoGOzfdPbT1ZPSIH_v0MJ8XCSmP5DR9h-Z1_yMnbteKxH3f8OCoHQTAYOQjRCWRVWhSDFX2Mf7BHlfAV-VAN5OZcjQgRLHyvNdp_SiS5FKdfbawEtyMDV0000__y30000)
 - Giải thích biểu đồ lớp trong hệ thống Create Administrative Report:
-  + Lớp PayrollAdministrator đại diện cho người quản lý hệ thống bảng lương, có thể yêu cầu tạo báo cáo hành chính với các tiêu chí như loại báo cáo (tổng giờ làm hoặc lương), khoảng thời gian, và nhân viên cụ thể.
-  + Lớp Report là đối tượng chứa nội dung của báo cáo, có các thuộc tính reportType để lưu loại báo cáo và dateRange để chỉ định khoảng thời gian.
-  + Lớp System xử lý yêu cầu từ PayrollAdministrator và tạo Report với dữ liệu phù hợp.
-- Quan hệ:
-  + PayrollAdministrator gửi yêu cầu tạo báo cáo đến System.
-  + System tạo một đối tượng Report và trả lại cho PayrollAdministrator.
+  + PayrollAdministrator: Lớp đại diện cho quản trị viên, với nhiệm vụ yêu cầu tạo báo cáo và lưu báo cáo.
+  + ReportGenerator: Tạo báo cáo dựa trên tiêu chí do PayrollAdministrator cung cấp, kiểm tra tiêu chí qua ReportCriteriaValidator và lưu báo cáo nếu cần.
+  + ReportCriteriaValidator: Xác minh tính hợp lệ của tiêu chí báo cáo.
+  + ReportRepository: Lưu hoặc xóa báo cáo dựa trên yêu cầu.
+  + ErrorHandler: Hiển thị thông báo lỗi khi có thông tin thiếu hoặc không hợp lệ.
 # 2. Phân tích ca sử dụng Create Employee Report
 **Các lớp phân tích:**
 
