@@ -147,3 +147,144 @@
   + PaymentService: Xử lý các hình thức thanh toán và in phiếu lương hoặc gửi giao dịch ngân hàng.
   + BankSystem: Xử lý giao dịch ngân hàng nếu nhân viên chọn phương thức chuyển khoản.
 # 7. Viết code Java mô phỏng ca sử dụng Maintain Timecard.
+package Thietkephanmem;
+
+import java.util.*;
+
+class Employee {
+    private String name;
+    private String id;
+
+    public Employee(String name, String id) {
+        this.name = name;
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
+    }
+}
+
+class Timecard {
+    private String employeeId;
+    private Map<String, Integer> hoursWorked; // chargeNumber -> số giờ làm việc
+    private boolean submitted;
+    private Date startDate;
+    private Date endDate;
+    private Date submittedDate;
+
+    public Timecard(String employeeId, Date startDate, Date endDate) {
+        this.employeeId = employeeId;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.hoursWorked = new HashMap<>();
+        this.submitted = false;
+    }
+
+    // Thêm giờ làm việc vào timecard
+    public void addHours(String chargeNumber, int hours) {
+        if (hours < 0 || hours > 24) {
+            throw new IllegalArgumentException("Giờ làm không hợp lệ. Phải nằm trong khoảng từ 0 đến 24.");
+        }
+        hoursWorked.put(chargeNumber, hours);
+        System.out.println("Đã thêm " + hours + " giờ cho mã " + chargeNumber);
+    }
+
+    // Gửi timecard
+    public void submit() {
+        if (submitted) {
+            System.out.println("Timecard đã được gửi. Không thể chỉnh sửa.");
+            return;
+        }
+        submittedDate = new Date();
+        submitted = true;
+        System.out.println("Timecard đã được gửi thành công vào ngày: " + submittedDate);
+    }
+
+    // Kiểm tra xem timecard đã được gửi hay chưa
+    public boolean isSubmitted() {
+        return submitted;
+    }
+
+    // Hiển thị thông tin giờ làm việc
+    public void displayHours() {
+        System.out.println("Giờ làm việc trên Timecard:");
+        for (Map.Entry<String, Integer> entry : hoursWorked.entrySet()) {
+            System.out.println("Mã: " + entry.getKey() + ", Giờ: " + entry.getValue());
+        }
+    }
+}
+
+class MaintainTimecardService {
+    private List<String> availableChargeNumbers;
+
+    public MaintainTimecardService() {
+        // Danh sách mã dự án (charge numbers) có sẵn để chọn
+        availableChargeNumbers = Arrays.asList("A", "B", "C");
+    }
+
+    public void processTimecard(Employee employee, Timecard timecard) {
+        if (timecard.isSubmitted()) {
+            System.out.println("Timecard đã được gửi. Chế độ xem chỉ đọc.");
+            timecard.displayHours();
+            return;
+        }
+
+        System.out.println("Bắt đầu nhập giờ làm cho nhân viên " + employee.getId());
+        System.out.println("Danh sách mã dự án có sẵn: " + availableChargeNumbers);
+
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.print("Nhập mã dự án (hoặc nhập 'xong' để hoàn thành): ");
+            String chargeNumber = scanner.nextLine();
+            if (chargeNumber.equalsIgnoreCase("xong")) {
+                break;
+            }
+            if (!availableChargeNumbers.contains(chargeNumber)) {
+                System.out.println("Mã dự án không hợp lệ.");
+                continue;
+            }
+
+            System.out.print("Nhập số giờ làm: ");
+            int hours = scanner.nextInt();
+            scanner.nextLine(); // Đọc bỏ dòng mới
+
+            try {
+                timecard.addHours(chargeNumber, hours);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Employee employee = new Employee("Nguyễn Văn A", "001");
+        
+        // Giả sử thời gian kỳ làm việc từ hôm nay đến 7 ngày sau
+        Date startDate = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(startDate);
+        calendar.add(Calendar.DAY_OF_YEAR, 7);
+        Date endDate = calendar.getTime();
+
+        Timecard timecard = new Timecard(employee.getId(), startDate, endDate);
+        MaintainTimecardService service = new MaintainTimecardService();
+
+        service.processTimecard(employee, timecard);
+
+        System.out.print("Bạn có muốn gửi timecard không? (y/n): ");
+        Scanner scanner = new Scanner(System.in);
+        String choice = scanner.nextLine();
+
+        if (choice.equalsIgnoreCase("y")) {
+            timecard.submit();
+        } else {
+            System.out.println("Bạn chưa gửi timecard. Thay đổi đã được lưu.");
+        }
+
+        System.out.println("Kết thúc chương trình.");
+    }
+}
+
