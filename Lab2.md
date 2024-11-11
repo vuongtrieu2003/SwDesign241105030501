@@ -51,6 +51,7 @@
 - EmployeeRepository: Lưu trữ và truy xuất thông tin nhân viên.
 
 **Biểu đồ sequence**
+
 ![Sequence Diagram](https://www.planttext.com/api/plantuml/png/Z94n2i8m58RtdE9Tm0jqa8e83WwYasD8WmscIKbU2hsD2Y9qSd3ImI7WFJo1Lp0T15iZk3r-tl-z3zxpUaijKeEkaCHkX0AZBIUKeJOmfxNHKewoGYXXqT0GabW8Wo5CYbBgclCbDvLWF86LRnomn-Ne07Eg0VsE0HhVA52vtokeH9X9hzUYOYTwF7zMQq3HHVsjDdQX7L27yWCLCtb72rvgAmAkJc1sF_qq-Dw7GKnWglrM0GO31DdbaPIhhFt62m00__y30000)
 
 **Thuộc tính và Quan hệ:**
@@ -59,6 +60,7 @@
 - EmployeeRepository: Lưu hoặc cập nhật thông tin của nhân viên trong cơ sở dữ liệu.
 
 **Biểu đồ lớp**
+
 ![Class Diagram](https://www.planttext.com/api/plantuml/png/Z90n3i8m34Ltdo8Z3Bq2AWC36u8JM8r14KvInMcb274o1ex45KYbL41WmEFp_r_-VjpkhKGCSR0CSZPE1Iy47QE8sc4AddcjhN56Oi3eWxg0ocFHuOasjcUVYBRkw1TBk48npln0OJGT5GzgFI-oU293hp5I1JKnVS2ls3trNam-9fLamR5E-JlwPyccMTKbe2xrhdbT12qvFJtp2G00__y30000)
 - Giải thích biểu đồ lớp:
   + PayrollAdministrator: Quản trị viên thực hiện các thao tác thêm, cập nhật hoặc xóa thông tin nhân viên.
@@ -66,12 +68,26 @@
   + EmployeeRepository: Lưu, cập nhật, hoặc xóa dữ liệu nhân viên trong cơ sở dữ liệu.
 # 5. Phân tích ca sử dụng Maintain Purchase Order
 **Các lớp phân tích:**
+- CommissionedEmployee: Nhân viên bán hàng ghi nhận đơn đặt hàng.
+- PurchaseOrderService: Xử lý các thao tác thêm, sửa, xóa đơn đặt hàng.
+- PurchaseOrderRepository: Lưu trữ thông tin đơn đặt hàng.
 
 **Biểu đồ sequence**
 
+![Sequence Diagram](https://www.planttext.com/api/plantuml/png/UhzxlqDnIM9HIMbk3bTnTcQUGb5-SIfNOd99Vf62StvkRcPnSMP-NcgAQsv1JdvbQYeNDa45NJk5WDAYv8p4ubJ_efJKek3KehBCv5Gh1UUCXxjxynHACXBp5KeEBqnMA2awl2fFuSZ4Omj1vCDTsqiKCWulo4ldmgOVP2us-wmK8W-lAbL8VhXhUIdGxCDRyj8LIZ9XnaBC8z6TfK0ZWEOjBS1b7YxteOW7fHRa5sS2mwxIIi7ds0QSZiEXIK4NfmCzye4Q5Kg0BYnHo06PZ6oSGsfU2YW20G000F__0m00)
+
 **Thuộc tính và Quan hệ:**
+- CommissionedEmployee: Thực hiện các thao tác với đơn đặt hàng.
+- PurchaseOrderService: Xử lý thêm, sửa, xóa đơn hàng.
+- PurchaseOrderRepository: Lưu và quản lý thông tin đơn đặt hàng trong hệ thống.
 
 **Biểu đồ lớp**
+
+![Class Diagram](https://www.planttext.com/api/plantuml/png/b91D2i9038NtESKiTT4hY22k5Jr1c7deuFoKP5eeuibSU2Ile8Mgg0KnovTyZ_ToFL_cMbXA4mFfmISZMK4siAfPv1Yzgiy9RXdha3l07CdS9tBY7TQDs3qhLk8WaocTQ23V5bj8w-s3j08kJw9NcjfzA0u1vOVh1dLMNx9qWx5o-w_jQC6gcetcfz5INzUlN3H7SlrVRm000F__0m00)
+- Giải thích biểu đồ lớp:
+  + CommissionedEmployee: Nhân viên thực hiện các thao tác với đơn đặt hàng.
+  + PurchaseOrderService: Xử lý việc thêm, cập nhật, và xóa đơn đặt hàng của nhân viên.
+  + PurchaseOrderRepository: Lưu trữ thông tin đơn đặt hàng mới hoặc cập nhật thông tin đơn đặt hàng trong cơ sở dữ liệu.
 # 6. Phân tích ca sử dụng Run Payroll
 **Các lớp phân tích:**
 - PayrollScheduler: Kích hoạt quá trình chạy bảng lương vào ngày định kỳ.
@@ -81,6 +97,7 @@
 - BankSystem: Xử lý giao dịch ngân hàng đối với thanh toán chuyển khoản.
 
 **Biểu đồ sequence**
+
 ![Sequence Diagram](https://www.planttext.com/api/plantuml/png/Z9B1IWCn48Rl-nJp0ds17gG71KKFnNhmkcR39dGtAKcsk6UFNdm1eLMAQ2bu48HTf8T8toDFu2iuqMsjQoYUCeIPR_v_PZxgPK-RM9aYpo8zv0AKr3IAYP4A1gKsD8--7-ZiGJykbSoo0M4qAJAgkl1-uwgb0CDSVSiXvJ76obNtaAsULrEHHkqIZpd8HvaiAJsb8wavTYgxSEAgMGb9B1XeEoKC1BDt0iRSFWaWhdfeW_z2e1EKk1za1eKrVtqb2TLQOl6vgnUGsJUumDuYNNS7mYGOLyyn340tWDrk3RCl230uzMt8RcTRuix2zI4H-9TJOGPKZJcXM6eNE9Mrcx6Tm92Xfi8FkPv7lzD3W6FkwgiSqsCOiGRZh-2HuECdRgITYd-0ZWG2E5vHiP73fAjU2QGu-w-Raf2u-jhlB_KkcPty75RRPMlvXnAJSLFLpC1biykeHqNYx_qJ003__mC0)
 
 **Thuộc tính và Quan hệ:**
@@ -91,6 +108,7 @@
 - BankSystem: Xử lý giao dịch ngân hàng nếu thanh toán qua chuyển khoản.
 
 **Biểu đồ lớp**
+
 ![Class Diagram](https://www.planttext.com/api/plantuml/png/R9712i8m38RlUOeUzR1N416y3-SBb2veMTkCf1EA-6GUV2HVGSSsTEjw2_-ND1zvFrzxYPfZvnr8OuDY4WJZj8WgTM9ohZ9Nh3k7hEwWle-xC2QRBJnW3fTC1aLeWjkXNcau-jPHGZnXIs8ZSHfRBXYdJ1O_U0onGhvPWzdyFll73peqLPA8VewUMGVH9beA0vvf5iKkqu7ChwToXtLklZeiJ7hYjotiCTJzEJu0003__mC0)
 - Giải thích biểu đồ lớp trong hệ thống Run Payroll:
   + PayrollScheduler: Kích hoạt quá trình chạy bảng lương tự động vào ngày định kỳ.
@@ -98,4 +116,3 @@
   + EmployeeRepository: Cung cấp thông tin nhân viên để tính lương.
   + PaymentService: Xử lý các hình thức thanh toán và in phiếu lương hoặc gửi giao dịch ngân hàng.
   + BankSystem: Xử lý giao dịch ngân hàng nếu nhân viên chọn phương thức chuyển khoản.
-
