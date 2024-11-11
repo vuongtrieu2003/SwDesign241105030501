@@ -1,60 +1,69 @@
 # 1. Phân tích ca sử dụng Create Administrative Report
 **Các lớp phân tích:**
-  + PayrollAdministrator: Người dùng hệ thống có quyền tạo và lưu báo cáo hành chính.
-  + ReportCriteria: Lớp lưu trữ các tiêu chí cho báo cáo, bao gồm loại báo cáo, ngày bắt đầu/kết thúc và tên nhân viên.
-  + ReportGenerator: Lớp chịu trách nhiệm tạo báo cáo dựa trên các tiêu chí được cung cấp.
-  + Report: Lớp đại diện cho báo cáo cuối cùng được tạo, có thể được xem và lưu trữ.
-  + FileManager: Quản lý việc lưu trữ báo cáo, bao gồm yêu cầu nhập tên và vị trí lưu báo cáo.
-
+- PayrollAdministrator: Người yêu cầu tạo báo cáo.
+- ReportGenerator: Chịu trách nhiệm tạo báo cáo.
+- ReportCriteriaValidator: Xác minh tiêu chí báo cáo.
+- ReportRepository: Lưu trữ báo cáo.
+- ErrorHandler: Hiển thị lỗi.
+  
 **Biểu đồ sequence**
-![Sequence Diagram](https://www.planttext.com/api/plantuml/png/T9B1IWCn48RlUOgX9ptu0ZsKbe9wK2dYnMFS3TrWcfGaM-ZPauW7tq0H4GeBUdHpy13nFV84leAJhMopBLucCCpt__CF-N6VGsEfjkLC47FD9MXb612QMQMXDw5BhOI0KJxZaXkhARPxG0sCuW0XpGC70pXdSwNjM7FBDAVGXqk_AY4BzMi9DjHF2guybWmBsPfjwICcMUE0-BYKquY_pC7oHghmrOx6XcX5aBte-a4Ut3i5g_rA9c9_4f5Sf-Z3CG_k1cUAuEuI_kl1Fwz3RF8USi5EgQHJfhjXnVTRcR1xrdyiqI-uUxbFKYhnFIj2NM7GkE32Fy8Y-kE-LQFsdsbweXroswezpabtFuHKuXSNlSN0s9058KCcy_WpVW400F__0m00)
 
-- Xác định một số thuộc tính và quan hệ giữa các lớp phân tích:
-  + Lớp PayrollAdministrator:
-    * Nhiệm vụ: Yêu cầu tạo báo cáo và có thể lưu báo cáo.
-    * Thuộc tính: adminID, name.
-    * Quan hệ: Kết nối với ReportCriteria để nhập tiêu chí và với FileManager để lưu báo cáo.
-  + Lớp ReportCriteria:
-    * Nhiệm vụ: Lưu trữ tiêu chí báo cáo như loại báo cáo, ngày bắt đầu/kết thúc và tên nhân viên.
-    * Thuộc tính: reportType, startDate, endDate, employeeNames.
-    * Quan hệ: Cung cấp thông tin cho ReportGenerator để tạo báo cáo.
-  + Lớp ReportGenerator:
-    * Nhiệm vụ: Tạo báo cáo dựa trên tiêu chí từ ReportCriteria.
-    * Thuộc tính: reportID, generationDate
-    * Quan hệ: Nhận tiêu chí từ ReportCriteria và tạo đối tượng Report.+ 
-  + Lớp Report:
-    * Nhiệm vụ: Đại diện cho báo cáo cuối cùng có thể xem hoặc lưu trữ.
-    * Thuộc tính: content, format, createdDate.
-    * Quan hệ: Được tạo bởi ReportGenerator và có thể được lưu bởi FileManager.
-  + Lớp FileManager:
-    * Nhiệm vụ: Quản lý việc lưu báo cáo theo tên và vị trí được cung cấp.
-    * Thuộc tính: filePath, fileName.
-    * Quan hệ: Nhận thông tin từ PayrollAdministrator để lưu Report.
+![Sequence Diagram](https://www.planttext.com/api/plantuml/png/UhzxlqDnIM9HIMbk3bTnTcQUGb5-SIfNOd99Vf52G69bKNvEZcDARcPUPd59KI9Ga0kRe8AkdK9GQa5-KObxQbugMCXA8VBmgbA5v8UxbfSgb3pSjJ1V8Uama4W64bneQX7QdOioIrABCXF34dCoKo36H1nUcAnGal5mzqOWbGasC-FmMWp3C7HYTLC8mW2WYOiB578Uxcx7xHnadOIzW2rah1GyCX_kRiu3-w0RIJyvmPXpR4CfEKv0Zed3g_8KoWulK2W3EQUa21WG85E9TuvpQLuwoAob1LZCmXsI8B8u4oXKQQNWWyqR20KAkjZiTOAfLpWoyV1YYACTKlDIGEaM0000__y30000)
+
+**Thuộc tính và Quan hệ:**
+
+- PayrollAdministrator: Có thuộc tính adminId, name, và phương thức generateAdminReport().
+- Report: Có thuộc tính reportType, dateRange, content, chứa nội dung của báo cáo.
+- System: Liên kết giữa PayrollAdministrator và Report để tạo báo cáo theo tiêu chí.
+
       
 **Biểu đồ lớp**
 
-![Class Diagram](https://www.planttext.com/api/plantuml/png/X59BRi8m4DtFANo1NA6Y8W9r0KA82uoI0IpiSJIUBgAg9-k28_KA1CUGr6hLtPlFUpDlxE-lwo8gYhvx1_5YsKY818t36CqEUmdElRRUieqgg47C1nXJ6Rpdtkg46Jt19sJIdheWkXIh91PpkwJaeUyeXMbYZJf6nEs4VUT2JxGTD6CfkYQc-HAZQjxYD1Pju2HMK3EZ2Qp4cl0nYCSHDa83f_r9N5b76sGyqMFUSSZiKC_FO9kT_tgegdefZW75RQQEfpCedKuz_qtvkpvp0dDNCouiXbUu_u4R0000__y30000)
+![Class Diagram](https://www.planttext.com/api/plantuml/png/R90z3i8m38NtdC8Z7Ng130Wa5ZPKk43KMbL4wo377Ih4OPYGE08C39oa9-0AD6rQ2OdDVlRx_FDvlbPU34jJLyeVBG4xZoglZFUmCosxgbeNjINhXOquXhC201EaRQ71aeISJ8qQziAMof2NIDYtus3DyEHO5ecwg0WUbH75GtneJp-0eZTdXifUt4nXq7D7WYHpwupSjrwm7f7Jz3WuPol8raocHCS5WlllZMcwd80QslUzWRnxt1eLjL2E9sYGxd5rQeLKX1T-0G00__y30000)
 - Giải thích biểu đồ lớp trong hệ thống Create Administrative Report:
-  + PayrollAdministrator cung cấp tiêu chí báo cáo qua ReportCriteria và yêu cầu ReportGenerator tạo báo cáo.
-  + ReportGenerator tạo báo cáo dựa trên thông tin từ ReportCriteria và cung cấp Report cuối cùng.
-  + PayrollAdministrator có thể lưu Report thông qua FileManager, nơi quản lý tên và vị trí lưu trữ.
+  + Lớp PayrollAdministrator đại diện cho người quản lý hệ thống bảng lương, có thể yêu cầu tạo báo cáo hành chính với các tiêu chí như loại báo cáo (tổng giờ làm hoặc lương), khoảng thời gian, và nhân viên cụ thể.
+  + Lớp Report là đối tượng chứa nội dung của báo cáo, có các thuộc tính reportType để lưu loại báo cáo và dateRange để chỉ định khoảng thời gian.
+  + Lớp System xử lý yêu cầu từ PayrollAdministrator và tạo Report với dữ liệu phù hợp.
+- Quan hệ:
+  + PayrollAdministrator gửi yêu cầu tạo báo cáo đến System.
+  + System tạo một đối tượng Report và trả lại cho PayrollAdministrator.
 # 2. Phân tích ca sử dụng Create Employee Report
 **Các lớp phân tích:**
+
 **Biểu đồ sequence**
+
+**Thuộc tính và Quan hệ:**
+
 **Biểu đồ lớp**
 # 3. Phân tích ca sử dụng Login
 **Các lớp phân tích:**
+
 **Biểu đồ sequence**
+
+**Thuộc tính và Quan hệ:**
+
 **Biểu đồ lớp**
 # 4. Phân tích ca sử dụng Maintain Employee Information
 **Các lớp phân tích:**
+
 **Biểu đồ sequence**
+
+**Thuộc tính và Quan hệ:**
+
 **Biểu đồ lớp**
 # 5. Phân tích ca sử dụng Maintain Purchase Order
 **Các lớp phân tích:**
+
 **Biểu đồ sequence**
+
+**Thuộc tính và Quan hệ:**
+
 **Biểu đồ lớp**
 # 6. Phân tích ca sử dụng Run Payroll
 **Các lớp phân tích:**
+
 **Biểu đồ sequence**
+
+**Thuộc tính và Quan hệ:**
+
 **Biểu đồ lớp**
