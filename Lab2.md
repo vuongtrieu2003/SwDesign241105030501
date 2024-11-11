@@ -21,7 +21,7 @@
 **Biểu đồ lớp**
 
 ![Class Diagram](https://www.planttext.com/api/plantuml/png/V55B2i8m4Dtd55tgmYj8fOWkHS7zqCnYC2PrPbeeuibSU2IlO6Ch3LNC8f1vlxpaUN_aei1QdvsH4_cCWw0f7OXaEsWvEBUoP_8aog21iwl9kiLugL5qZrLWBHX1AVZPFCKEq62FT_ER6JpxoGOzfdPbT1ZPSIH_v0MJ8XCSmP5DR9h-Z1_yMnbteKxH3f8OCoHQTAYOQjRCWRVWhSDFX2Mf7BHlfAV-VAN5OZcjQgRLHyvNdp_SiS5FKdfbawEtyMDV0000__y30000)
-- Giải thích biểu đồ lớp trong hệ thống Create Administrative Report:
+- Giải thích biểu đồ lớp:
   + PayrollAdministrator: Lớp đại diện cho quản trị viên, với nhiệm vụ yêu cầu tạo báo cáo và lưu báo cáo.
   + ReportGenerator: Tạo báo cáo dựa trên tiêu chí do PayrollAdministrator cung cấp, kiểm tra tiêu chí qua ReportCriteriaValidator và lưu báo cáo nếu cần.
   + ReportCriteriaValidator: Xác minh tính hợp lệ của tiêu chí báo cáo.
@@ -29,6 +29,7 @@
   + ErrorHandler: Hiển thị thông báo lỗi khi có thông tin thiếu hoặc không hợp lệ.
 # 2. Phân tích ca sử dụng Create Employee Report
 **Các lớp phân tích:**
+
 
 **Biểu đồ sequence**
 
@@ -45,12 +46,24 @@
 **Biểu đồ lớp**
 # 4. Phân tích ca sử dụng Maintain Employee Information
 **Các lớp phân tích:**
+- PayrollAdministrator: Người thực hiện thêm, cập nhật hoặc xóa thông tin nhân viên.
+- EmployeeService: Xử lý các thao tác thêm, sửa hoặc xóa nhân viên.
+- EmployeeRepository: Lưu trữ và truy xuất thông tin nhân viên.
 
 **Biểu đồ sequence**
+![Sequence Diagram](https://www.planttext.com/api/plantuml/png/Z94n2i8m58RtdE9Tm0jqa8e83WwYasD8WmscIKbU2hsD2Y9qSd3ImI7WFJo1Lp0T15iZk3r-tl-z3zxpUaijKeEkaCHkX0AZBIUKeJOmfxNHKewoGYXXqT0GabW8Wo5CYbBgclCbDvLWF86LRnomn-Ne07Eg0VsE0HhVA52vtokeH9X9hzUYOYTwF7zMQq3HHVsjDdQX7L27yWCLCtb72rvgAmAkJc1sF_qq-Dw7GKnWglrM0GO31DdbaPIhhFt62m00__y30000)
 
 **Thuộc tính và Quan hệ:**
+- PayrollAdministrator: Thực hiện thao tác quản lý thông tin nhân viên.
+- EmployeeService: Điều phối quá trình xử lý thông tin nhân viên.
+- EmployeeRepository: Lưu hoặc cập nhật thông tin của nhân viên trong cơ sở dữ liệu.
 
 **Biểu đồ lớp**
+![Class Diagram](https://www.planttext.com/api/plantuml/png/Z90n3i8m34Ltdo8Z3Bq2AWC36u8JM8r14KvInMcb274o1ex45KYbL41WmEFp_r_-VjpkhKGCSR0CSZPE1Iy47QE8sc4AddcjhN56Oi3eWxg0ocFHuOasjcUVYBRkw1TBk48npln0OJGT5GzgFI-oU293hp5I1JKnVS2ls3trNam-9fLamR5E-JlwPyccMTKbe2xrhdbT12qvFJtp2G00__y30000)
+- Giải thích biểu đồ lớp:
+  + PayrollAdministrator: Quản trị viên thực hiện các thao tác thêm, cập nhật hoặc xóa thông tin nhân viên.
+  + EmployeeService: Điều phối các yêu cầu xử lý thông tin nhân viên, gồm thêm, cập nhật và xóa thông tin.
+  + EmployeeRepository: Lưu, cập nhật, hoặc xóa dữ liệu nhân viên trong cơ sở dữ liệu.
 # 5. Phân tích ca sử dụng Maintain Purchase Order
 **Các lớp phân tích:**
 
@@ -61,9 +74,28 @@
 **Biểu đồ lớp**
 # 6. Phân tích ca sử dụng Run Payroll
 **Các lớp phân tích:**
+- PayrollScheduler: Kích hoạt quá trình chạy bảng lương vào ngày định kỳ.
+- PayrollProcessor: Xử lý bảng lương cho từng nhân viên.
+- EmployeeRepository: Cung cấp thông tin nhân viên để tính lương.
+- PaymentService: Quản lý phương thức thanh toán và xử lý trả lương.
+- BankSystem: Xử lý giao dịch ngân hàng đối với thanh toán chuyển khoản.
 
 **Biểu đồ sequence**
+![Sequence Diagram](https://www.planttext.com/api/plantuml/png/Z9B1IWCn48Rl-nJp0ds17gG71KKFnNhmkcR39dGtAKcsk6UFNdm1eLMAQ2bu48HTf8T8toDFu2iuqMsjQoYUCeIPR_v_PZxgPK-RM9aYpo8zv0AKr3IAYP4A1gKsD8--7-ZiGJykbSoo0M4qAJAgkl1-uwgb0CDSVSiXvJ76obNtaAsULrEHHkqIZpd8HvaiAJsb8wavTYgxSEAgMGb9B1XeEoKC1BDt0iRSFWaWhdfeW_z2e1EKk1za1eKrVtqb2TLQOl6vgnUGsJUumDuYNNS7mYGOLyyn340tWDrk3RCl230uzMt8RcTRuix2zI4H-9TJOGPKZJcXM6eNE9Mrcx6Tm92Xfi8FkPv7lzD3W6FkwgiSqsCOiGRZh-2HuECdRgITYd-0ZWG2E5vHiP73fAjU2QGu-w-Raf2u-jhlB_KkcPty75RRPMlvXnAJSLFLpC1biykeHqNYx_qJ003__mC0)
 
 **Thuộc tính và Quan hệ:**
+- PayrollScheduler: Tự động khởi chạy quá trình trả lương vào thời gian đã định.
+- PayrollProcessor: Tính lương cho từng nhân viên và áp dụng các khấu trừ cần thiết.
+- EmployeeRepository: Cung cấp thông tin nhân viên cho quy trình tính lương.
+- PaymentService: Xử lý thanh toán theo phương thức mong muốn của nhân viên.
+- BankSystem: Xử lý giao dịch ngân hàng nếu thanh toán qua chuyển khoản.
 
 **Biểu đồ lớp**
+![Class Diagram](https://www.planttext.com/api/plantuml/png/R9712i8m38RlUOeUzR1N416y3-SBb2veMTkCf1EA-6GUV2HVGSSsTEjw2_-ND1zvFrzxYPfZvnr8OuDY4WJZj8WgTM9ohZ9Nh3k7hEwWle-xC2QRBJnW3fTC1aLeWjkXNcau-jPHGZnXIs8ZSHfRBXYdJ1O_U0onGhvPWzdyFll73peqLPA8VewUMGVH9beA0vvf5iKkqu7ChwToXtLklZeiJ7hYjotiCTJzEJu0003__mC0)
+- Giải thích biểu đồ lớp trong hệ thống Run Payroll:
+  + PayrollScheduler: Kích hoạt quá trình chạy bảng lương tự động vào ngày định kỳ.
+  + PayrollProcessor: Tính lương cho từng nhân viên và xử lý các khoản khấu trừ.
+  + EmployeeRepository: Cung cấp thông tin nhân viên để tính lương.
+  + PaymentService: Xử lý các hình thức thanh toán và in phiếu lương hoặc gửi giao dịch ngân hàng.
+  + BankSystem: Xử lý giao dịch ngân hàng nếu nhân viên chọn phương thức chuyển khoản.
+
