@@ -68,3 +68,5 @@ Xác định các phần tử thiết kế của hệ thống “Payroll System�
 | `BankTransactionInterface`| ExternalServices   | Gói giao tiếp với hệ thống ngân hàng để thực hiện các giao dịch chuyển khoản.       |
 | `PrintJobManager`         | ExternalServices   | Gói xử lý tác vụ in phiếu lương cho nhân viên nhận lương qua đường bưu điện.        |
 
+## 4. Architectural layers and their dependencies
+ Biểu đồ mô tả các layers trong hệ thống và quan hệ giữa chúng.
