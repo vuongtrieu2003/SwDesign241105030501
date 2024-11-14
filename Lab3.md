@@ -70,3 +70,4 @@ Xác định các phần tử thiết kế của hệ thống “Payroll System�
 
 ## 4. Architectural layers and their dependencies
  Biểu đồ mô tả các layers trong hệ thống và quan hệ giữa chúng.
+
