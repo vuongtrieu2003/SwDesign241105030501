@@ -42,3 +42,16 @@ Xác định các phần tử thiết kế của hệ thống “Payroll System�
 - **ProjectManagementDatabase:**
   + Là hệ thống con lưu trữ thông tin dự án và giờ làm của nhân viên. Database này bao gồm thông tin về các dự án đang thực hiện, chi tiết nhiệm vụ, và giờ làm của từng nhân viên.
   + Khi Payroll System yêu cầu, ProjectManagementDatabase trả về dữ liệu giờ làm và chi tiết công việc của từng nhân viên, giúp Payroll System tính toán lương chính xác dựa trên công việc thực tế.
+
+## 2. Analysis class to design element map
+
+Bảng tóm tắt ánh xạ các lớp phân tích sang các phần tử thiết kế cho hệ thống "Payroll System":
+
+| **Lớp Phân Tích**            | **Phần Tử Thiết Kế**    | **Mô Tả**                                                                                      |
+|------------------------------|-------------------------|------------------------------------------------------------------------------------------------|
+| `Employee`                   | EmployeeClass           | Quản lý thông tin và dữ liệu của nhân viên.                                                    |
+| `Payroll Administrator`      | PayrollAdminClass       | Quản lý nhân viên, bao gồm các chức năng thêm, xóa, sửa thông tin và tạo báo cáo.              |
+| `Timecard`                   | TimecardClass           | Lưu trữ thông tin giờ làm việc của nhân viên theo từng kỳ lương.                               |
+| `Project Management Database`| ProjectDBInterface      | Giao tiếp với cơ sở dữ liệu quản lý dự án hiện có.                                             |
+| `Payroll System`             | PayrollSystemClass      | Thực hiện tính toán lương, xử lý thanh toán dựa trên dữ liệu từ TimecardClass và EmployeeClass.|
+
