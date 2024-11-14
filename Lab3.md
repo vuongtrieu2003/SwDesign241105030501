@@ -45,7 +45,7 @@ Xác định các phần tử thiết kế của hệ thống “Payroll System�
 
 ## 2. Analysis class to design element map
 
-Bảng tóm tắt ánh xạ các lớp phân tích sang các phần tử thiết kế cho hệ thống "Payroll System":
+**Bảng tóm tắt ánh xạ các lớp phân tích sang các phần tử thiết kế cho hệ thống "Payroll System":**
 
 | **Lớp Phân Tích**            | **Phần Tử Thiết Kế**    | **Mô Tả**                                                                                      |
 |------------------------------|-------------------------|------------------------------------------------------------------------------------------------|
@@ -54,4 +54,17 @@ Bảng tóm tắt ánh xạ các lớp phân tích sang các phần tử thiết
 | `Timecard`                   | TimecardClass           | Lưu trữ thông tin giờ làm việc của nhân viên theo từng kỳ lương.                               |
 | `Project Management Database`| ProjectDBInterface      | Giao tiếp với cơ sở dữ liệu quản lý dự án hiện có.                                             |
 | `Payroll System`             | PayrollSystemClass      | Thực hiện tính toán lương, xử lý thanh toán dựa trên dữ liệu từ TimecardClass và EmployeeClass.|
+
+## 3. Design element to owning package map
+**Bảng ánh xạ các phần tử thiết kế của hệ thống "Payroll System" vào các gói phù hợp:**
+
+| **Phần Tử Thiết Kế**      | **Gói (Package)**  | **Mô Tả**                                                                           |
+|---------------------------|--------------------|-------------------------------------------------------------------------------------|
+| `EmployeeClass`           | EmployeeManagement | Gói quản lý các thông tin và dữ liệu nhân viên.                                     |
+| `PayrollAdminClass`       | AdminManagement    | Gói quản lý các chức năng của quản trị viên như thêm, xóa, sửa thông tin nhân viên. |
+| `TimecardClass`           | TimeTracking       | Gói quản lý thông tin giờ làm của nhân viên trong mỗi kỳ lương.                     |
+| `ProjectDBInterface`      | ProjectManagement  | Gói giao tiếp với cơ sở dữ liệu quản lý dự án hiện có.                              |
+| `PayrollSystemClass`      | PayrollProcessing  | Gói xử lý các hoạt động liên quan đến tính toán lương và thanh toán.                |
+| `BankTransactionInterface`| ExternalServices   | Gói giao tiếp với hệ thống ngân hàng để thực hiện các giao dịch chuyển khoản.       |
+| `PrintJobManager`         | ExternalServices   | Gói xử lý tác vụ in phiếu lương cho nhân viên nhận lương qua đường bưu điện.        |
 
