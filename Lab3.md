@@ -69,5 +69,7 @@ Xác định các phần tử thiết kế của hệ thống “Payroll System�
 | `PrintJobManager`         | ExternalServices   | Gói xử lý tác vụ in phiếu lương cho nhân viên nhận lương qua đường bưu điện.        |
 
 ## 4. Architectural layers and their dependencies
- Biểu đồ mô tả các layers trong hệ thống và quan hệ giữa chúng.
+ **Biểu đồ mô tả các layers trong hệ thống và quan hệ giữa chúng:**
+
+ ![](https://www.planttext.com/api/plantuml/png/X9912i8m44NtSugX1-W9Ih7Yqfqd6EDGGcDQCgaWuibSU2IlO1DfqHXeTk6__oVpoUlnt8WdvyUp0UcqHTSBmq2gevQnm7WA9C5c68nMv7LlztHbXpT0TAmysTPCw9UUybXL9bZg6kwG3T-EeYsB7DXTj6B9JfWXdAciTNtOZZmrQaBpOuAC7pt1rwEZ-KZ2CRd8HGTroGsNtzI_cikohFFzGBwrQ4XsX7Jd1LeU2nksf_0DtW000F__0m00)
 
