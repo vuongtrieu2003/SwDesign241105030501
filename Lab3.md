@@ -45,7 +45,7 @@ Xác định các phần tử thiết kế của hệ thống “Payroll System�
 
 ## 2. Analysis class to design element map
 
-**Bảng tóm tắt ánh xạ các lớp phân tích sang các phần tử thiết kế cho hệ thống "Payroll System":**
+Bảng tóm tắt ánh xạ các lớp phân tích sang các phần tử thiết kế cho hệ thống "Payroll System":
 
 | **Lớp Phân Tích**            | **Phần Tử Thiết Kế**    | **Mô Tả**                                                                                      |
 |------------------------------|-------------------------|------------------------------------------------------------------------------------------------|
@@ -56,7 +56,7 @@ Xác định các phần tử thiết kế của hệ thống “Payroll System�
 | `Payroll System`             | PayrollSystemClass      | Thực hiện tính toán lương, xử lý thanh toán dựa trên dữ liệu từ TimecardClass và EmployeeClass.|
 
 ## 3. Design element to owning package map
-**Bảng ánh xạ các phần tử thiết kế của hệ thống "Payroll System" vào các gói phù hợp:**
+Bảng ánh xạ các phần tử thiết kế của hệ thống "Payroll System" vào các gói phù hợp:
 
 | **Phần Tử Thiết Kế**      | **Gói (Package)**  | **Mô Tả**                                                                           |
 |---------------------------|--------------------|-------------------------------------------------------------------------------------|
@@ -69,7 +69,7 @@ Xác định các phần tử thiết kế của hệ thống “Payroll System�
 | `PrintJobManager`         | ExternalServices   | Gói xử lý tác vụ in phiếu lương cho nhân viên nhận lương qua đường bưu điện.        |
 
 ## 4. Architectural layers and their dependencies
- **Biểu đồ mô tả các layers trong hệ thống và quan hệ giữa chúng:**
+ Biểu đồ mô tả các layers trong hệ thống và quan hệ giữa chúng:
 
- ![](https://www.planttext.com/api/plantuml/png/X9912i8m44NtSugX1-W9Ih7Yqfqd6EDGGcDQCgaWuibSU2IlO1DfqHXeTk6__oVpoUlnt8WdvyUp0UcqHTSBmq2gevQnm7WA9C5c68nMv7LlztHbXpT0TAmysTPCw9UUybXL9bZg6kwG3T-EeYsB7DXTj6B9JfWXdAciTNtOZZmrQaBpOuAC7pt1rwEZ-KZ2CRd8HGTroGsNtzI_cikohFFzGBwrQ4XsX7Jd1LeU2nksf_0DtW000F__0m00)
+ ![](https://www.planttext.com/api/plantuml/png/V5HBJiCm4Dtx5ACU84T0RHfOjH9gJp24KMJgs97j8aM8ax7WI5m1n_avay0ky-OzpvkFylFrlNSUhR_NIhYRr62D8o4QB6zO4UmEJQDaYLuQ3ITioUu07IHe1E5305WgFUfA1TKPfKuuJyRMKTVXNG1B-ibKSYR5Y36Ebj0JFDQDCYqHNAWnraVwYFKGYC_4VNvtKfDpLxBliYINjC1JctqyOskDKaL-HXqUx9KSP5OdZtsw9krXBB8mF9bQrLnh1d2Mf5qMwF5G1ZZjRmOtEoloeqBNFpvySnzadNG-L9sP36EAAuREQ3aiXgsDlw0ZPhk3_bl7H5gkW_ktvYr4wHgMkZxVwOAdwJApB7jOhLZqDxcTOmSOINp7Ggok9lBOUCJgDZPP_1eYQTYY47paIzT_fCTXY3tfr-vdy0i00F__0m00)
 
