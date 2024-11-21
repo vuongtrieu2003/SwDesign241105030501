@@ -1,5 +1,5 @@
 # Lab 4
-## 1. Login
+## 1. Login:
 ### 1.1. Mô tả tương tác giữa các đối tượng thiết kế:
 - Đối tượng:
   + `LoginForm`: Giao diện nhập thông tin người dùng.
@@ -34,3 +34,29 @@
   + `LoginForm`: Quản lý giao diện nhập liệu.
   + `AuthenticationService`: Xử lý xác thực.
   + `Employee`: Đại diện người dùng đã đăng nhập.
+## 2. Maintain Timecard:
+### 2.1. Mô tả tương tác giữa các đối tượng thiết kế:
+- Đối tượng:
+  + `TimecardForm`: Giao diện nhập thẻ chấm công.
+  + `TimecardController`: Xử lý logic nghiệp vụ liên quan đến thẻ chấm công.
+  + `Timecard`: Đối tượng lưu thông tin về giờ làm việc.
+- Tương tác:
+  + Nhân viên nhập thông tin thẻ chấm công vào `TimecardForm`.
+  + Dữ liệu được chuyển đến `TimecardController` để xử lý và lưu vào cơ sở dữ liệu qua `DatabaseService`.
+### 2.2. Đơn giản hóa sơ đồ tuần tự bằng hệ thống con:
+- Hệ thống con liên quan:
+  + `Timecard Management Subsystem`: Bao gồm `TimecardForm`, `TimecardController` và `DatabaseService`.
+- Quy trình: Tách riêng giao diện nhập liệu (`TimecardForm`) và xử lý logic nghiệp vụ (`TimecardController`).
+
+![](https://www.planttext.com/api/plantuml/png/V98_JiCm58Ttd-Adxhr01bI9lmFg0WEhurZ4mh4hsudKcO61Gz0WiI1LC33XWS5Ixv4JS0KS4jfGH1RBVjBxtlT-ygV_c5b7ZIiBIUoDK33QSaAPqmR7nKBg9UUW5fDv7XuLAX6UrOIakbGPDKjSYe8pQh8JRGh2j796ostni7jBRaX67KsfvJZgBnVSL89nGhP3fWU_Q0dcUVE-Ni3buKrTmqKt5oiUB9vF1LXR9iEM8M8tEy5fuzS2MUDV84NZxyenqAwnnUtf9ZZVl9P3fIgiDDYcXctymt06sMl5z1-xgr0pg7PN1TdJLoeVqVgJLBTWRvM6Me-0kg0YuYVu16TH-FOxNNy_f90PLrdxCRu0003__mC0)
+
+### 2.3. Mô tả hành vi liên quan đến lưu trữ:
+Dữ liệu: Thông tin thẻ chấm công (ngày làm việc, số giờ) được lưu vào bảng `Timecards` trong cơ sở dữ liệu.
+### 2.4. Tinh chỉnh mô tả luồng sự kiện:
+1. Nhân viên mở `TimecardForm`.
+2. Nhập thông tin thẻ chấm công:
+    - Ngày làm việc.
+    - Số giờ làm.
+3. Nhấn "Lưu" để gửi yêu cầu đến `TimecardController`.
+4. `TimecardController` xác thực dữ liệu và lưu vào `DatabaseService`.
+5. Hiển thị thông báo lưu thành công.
