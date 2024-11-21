@@ -60,3 +60,46 @@ Dữ liệu: Thông tin thẻ chấm công (ngày làm việc, số giờ) đư�
 3. Nhấn "Lưu" để gửi yêu cầu đến `TimecardController`.
 4. `TimecardController` xác thực dữ liệu và lưu vào `DatabaseService`.
 5. Hiển thị thông báo lưu thành công.
+### 2.5. Hợp nhất các lớp và hệ thống con:
+- Các lớp liên quan:
+  + `TimecardForm`: Quản lý giao diện nhập liệu.
+  + `TimecardController`: Xử lý nghiệp vụ liên quan đến thẻ chấm công.
+  + `Timecard`: Lưu trữ thông tin giờ làm việc.
+## 3. Run Payroll:
+### 3.1. Mô tả tương tác giữa các đối tượng thiết kế:
+- Đối tượng:
+  + `PayrollController`: Quản lý quá trình tính lương.
+  + `BankSystem`: Thực hiện giao dịch ngân hàng.
+  + `PrintService`: In phiếu lương.
+  + `Paycheck`: Đối tượng lưu thông tin lương.
+- Tương tác:
+  + `PayrollController` lấy thông tin từ thẻ chấm công và tính lương.
+  + Kết quả được gửi đến `BankSystem` hoặc `PrintService`.
+### 3.2. Đơn giản hóa sơ đồ tuần tự bằng hệ thống con:
+- Hệ thống con liên quan:
+  + `Payroll Processing Subsystem`: Bao gồm `PayrollController`, `BankSystem` và `PrintService`.
+- Quy trình: Phân chia các chức năng thành hai phần chính:
+  + Thanh toán qua ngân hàng (`BankSystem`).
+  + In phiếu lương (`PrintService`).
+
+![](https://www.planttext.com/api/plantuml/png/Z9EzJiCm58NtFCLLzxv01bH-940mWDg1rQHHRTMv0SUfoCZCnCX42wgGAYenCCL27LprFVm4l08tBQIbJGKPdDYvv_CvlicdcJGIpPHE8-abNO6WuYJqMA1Z1RljY1PO0hNprENF25evSmSzOKTOyu8OjOebdB6CRd9_CPMXyjfCiqkMX73m_T0CLKy4OIdPOzXjPeaEeoL52TG_TTvYv_hE9jo74-xCeu3flJCFs87hD2DVzXKvQ3kcKSxUPWFiU1lIWhVco8TJbmy9mEqxiJHjghdB3GGq3YC8YcLlJGJrQcCjHOS4FMTk_-1LEgi2_ih3f8OMPqNEs0wGWZF0Zdr2uBPFxu6kIlBoj7quT6Oi8BEZ50ANlwHahoJE2SlYRJ4lx200f3nZN5KNcViqMKGC9RN_6E6A2vTFqZB4LfEh_Q-mARQWLbJ_yIlMRMAxgXi4cd-1FXp5L0sQcgVXXao1j1-bWmR9Y__c2m00__y30000)
+
+### 3.3. Mô tả hành vi liên quan đến lưu trữ:
+- Dữ liệu:
+  + Lương sau khi tính toán được lưu trong bảng `Paychecks`.
+  + Thông tin giao dịch ngân hàng được ghi nhận vào `TransactionLog`.
+### 3.4. Tinh chỉnh mô tả luồng sự kiện:
+1. `PayrollController` khởi động quy trình tính lương.
+2. Lấy thông tin thẻ chấm công từ bảng `Timecards`.
+3. Tính lương cho từng nhân viên:
+    - Lương theo giờ, cố định, hoặc hoa hồng.
+4. Tạo đối tượng `Paycheck` cho mỗi nhân viên.
+5. Gửi thông tin:
+    - Đến `BankSystem` để chuyển khoản.
+    - Hoặc đến `PrintService` để in phiếu lương.
+### 3.5. Hợp nhất các lớp và hệ thống con:
+- Các lớp liên quan:
+  + `PayrollController`: Điều phối quy trình tính lương.
+  + `BankSystem`: Xử lý giao dịch ngân hàng.
+  + `PrintService`: Xử lý in phiếu lương.
+  + `Paycheck`: Lưu thông tin chi tiết về lương.
