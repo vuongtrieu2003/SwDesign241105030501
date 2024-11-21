@@ -34,6 +34,9 @@
   + `LoginForm`: Quản lý giao diện nhập liệu.
   + `AuthenticationService`: Xử lý xác thực.
   + `Employee`: Đại diện người dùng đã đăng nhập.
+### 1.6. Lý do thiết kế:
+#### a. Mục tiêu:
+#### b. Lý do:
 ## 2. Maintain Timecard:
 ### 2.1. Mô tả tương tác giữa các đối tượng thiết kế:
 - Đối tượng:
@@ -65,6 +68,9 @@ Dữ liệu: Thông tin thẻ chấm công (ngày làm việc, số giờ) đư�
   + `TimecardForm`: Quản lý giao diện nhập liệu.
   + `TimecardController`: Xử lý nghiệp vụ liên quan đến thẻ chấm công.
   + `Timecard`: Lưu trữ thông tin giờ làm việc.
+### 2.6. Lý do thiết kế:
+#### a. Mục tiêu:
+#### b. Lý do:
 ## 3. Run Payroll:
 ### 3.1. Mô tả tương tác giữa các đối tượng thiết kế:
 - Đối tượng:
@@ -103,3 +109,6 @@ Dữ liệu: Thông tin thẻ chấm công (ngày làm việc, số giờ) đư�
   + `BankSystem`: Xử lý giao dịch ngân hàng.
   + `PrintService`: Xử lý in phiếu lương.
   + `Paycheck`: Lưu thông tin chi tiết về lương.
+### 3.6. Lý do thiết kế:
+#### a. Mục tiêu:
+#### b. Lý do:
