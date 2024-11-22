@@ -36,7 +36,18 @@
   + `Employee`: Đại diện người dùng đã đăng nhập.
 ### 1.6. Lý do thiết kế:
 #### a. Mục tiêu:
+- Xác thực người dùng trước khi cho phép truy cập hệ thống.
+- Bảo vệ dữ liệu hệ thống khỏi truy cập trái phép.
 #### b. Lý do:
+- **Tách biệt giao diện và logic nghiệp vụ:**
+  + `LoginForm` đại diện cho giao diện người dùng, giúp người dùng nhập thông tin (username, password). Tách biệt với logic nghiệp vụ xác thực trong `AuthenticationService`.
+  + Thiết kế này giúp dễ dàng thay đổi hoặc nâng cấp giao diện mà không ảnh hưởng đến phần xác thực.
+- **Đóng gói hệ thống con:**
+  + `AuthenticationService` được thiết kế như một hệ thống con (subsystem) chịu trách nhiệm xử lý xác thực.
+- **Tính mở rộng:**
+  + Dễ dàng thêm các phương thức xác thực khác (như OTP, xác thực qua email) vào `AuthenticationService` mà không làm gián đoạn logic hiện tại.
+- **Tuân thủ bảo mật:**
+  + Thiết kế không cho phép giao diện (`LoginForm`) trực tiếp truy cập vào UserDatabase, đảm bảo rằng mọi truy vấn phải thông qua `AuthenticationService`, nơi có thể kiểm soát và ghi lại hoạt động.
 ## 2. Maintain Timecard:
 ### 2.1. Mô tả tương tác giữa các đối tượng thiết kế:
 - Đối tượng:
@@ -70,7 +81,18 @@ Dữ liệu: Thông tin thẻ chấm công (ngày làm việc, số giờ) đư�
   + `Timecard`: Lưu trữ thông tin giờ làm việc.
 ### 2.6. Lý do thiết kế:
 #### a. Mục tiêu:
+- Cho phép nhân viên nhập, chỉnh sửa và lưu trữ thông tin chấm công.
+- Đảm bảo thông tin được lưu trữ chính xác và có thể truy xuất khi cần.
 #### b. Lý do:
+- **Phân chia trách nhiệm rõ ràng:**
+  + `TimecardForm` chỉ chịu trách nhiệm thu thập dữ liệu từ người dùng và chuyển tiếp dữ liệu đến hệ thống xử lý.
+  + `TimecardController` (được thiết kế như một hệ thống con) đảm bảo rằng logic nghiệp vụ, như xác thực dữ liệu và xử lý định dạng, được xử lý trước khi lưu vào `DatabaseService`.
+- **Tăng tính trừu tượng hóa:**
+  + Thay vì cho phép `TimecardForm` giao tiếp trực tiếp với `DatabaseService`, `TimecardController` được sử dụng như một lớp trung gian giúp dễ dàng thay đổi logic nghiệp vụ mà không ảnh hưởng đến giao diện người dùng hoặc cơ sở dữ liệu.
+- **Hỗ trợ phát triển song song:**
+  + Cho phép các nhà phát triển giao diện làm việc song song với đội ngũ phát triển cơ sở dữ liệu mà không cần biết chi tiết hoạt động bên trong.
+- **Dễ bảo trì:**
+  + Việc tách biệt giao diện người dùng, logic nghiệp vụ, và lưu trữ dữ liệu giúp giảm thiểu rủi ro lỗi khi cập nhật một thành phần.
 ## 3. Run Payroll:
 ### 3.1. Mô tả tương tác giữa các đối tượng thiết kế:
 - Đối tượng:
@@ -111,4 +133,16 @@ Dữ liệu: Thông tin thẻ chấm công (ngày làm việc, số giờ) đư�
   + `Paycheck`: Lưu thông tin chi tiết về lương.
 ### 3.6. Lý do thiết kế:
 #### a. Mục tiêu:
+- Tính toán và xử lý thanh toán lương cho nhân viên.
+- Đảm bảo tùy chọn linh hoạt giữa chuyển khoản ngân hàng và in phiếu lương.
 #### b. Lý do:
+- **Phân nhánh xử lý linh hoạt:**
+  + Biểu đồ tuần tự sử dụng cấu trúc điều kiện (alt/else) để thể hiện hai kịch bản: xử lý thanh toán qua `BankSystem` và in phiếu lương qua `PrintService`.
+  + Đảm bảo quy trình tính lương có thể mở rộng hoặc thay đổi dễ dàng.
+- **Tích hợp hệ thống con:**
+  `PayrollController` được thiết kế như một hệ thống con, chịu trách nhiệm:
+    + Tương tác với cơ sở dữ liệu thông qua `DatabaseService` để lấy thông tin chấm công.
+    + Thực hiện logic tính lương.
+    + Gửi yêu cầu đến các hệ thống phụ như `BankSystem` hoặc `PrintService`.
+- **Hỗ trợ tích hợp dễ dàng:**
+  + Hệ thống tương tác với `BankSystem` và `PrintService` thông qua giao diện, giúp tích hợp dễ dàng với các hệ thống bên ngoài hoặc thay thế chúng nếu cần.
