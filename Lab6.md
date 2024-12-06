@@ -33,7 +33,7 @@
 ![](https://www.planttext.com/api/plantuml/png/N8yz3i8m38NtdCBgYDGBCA1Ai5TqHGo1lY4YJQBOhOGG9sFWI5o1_D25pVg-fsVxytftB3hAF5d5D-CeUePAI43DGOk-Q0Rr0L6ByOuRqamhxmFJGn6TDcTgsntjlNEuIYA_gT3ZZ7YdxSem9bzPjWCa6YmOmBCLJhdiJ4dzkxB3fWDBsnGiQbjbsQPBr5DrS6D-w0i00F__0m00)
 
 ### c. Xác định các thuộc tính
-![]()
+![](https://www.planttext.com/api/plantuml/png/UhzxlqDnIM9HIMbk3bTnTcQUGb5-SIfNSavYSR62SqPYKNggNsckGZMNWeAkGZACx-bYfP2PLm8MB2ZApqfDBl5Bp4srKWWkAShCImUBboNcb095qdBo4qkuQhdGZVJ9B2w16fi3P29CL518J4dHW5jbXT2Y2JJ68JKl1UHK00000F__0m00)
 
 ### d. Xác định các phụ thuộc, quan hệ kết hợp
-![]()
+![](https://www.planttext.com/api/plantuml/png/R8yn3i8m34Ntd2BgtWime4fbH8WhkC6YXjGHjdEw3Xo9Av18NK8P_Vt_i_zdVGzg89QNwFH9x2KfkX11rLybFJ3OcDWanOYowUCCSiTBNiwazgjjymaC9b0iOIuCIkpSZkVx_jZI_C5thun2g9rhDust-aBX074n_WVlNwWfB7MdI3hN2mFohJR_0W00__y30000)
